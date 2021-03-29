@@ -52,6 +52,7 @@ class ContactManager {
     this.setupListClickHandler();
     this.setupEditHandler();
     this.setupAddHandlers();
+    this.setupSubmitHandler();
   }
 
   setupListClickHandler() {
@@ -83,7 +84,6 @@ class ContactManager {
   }
 
   handleAddClick() {
-    this.setupSubmitHandler();
     let cancelBtn = document.querySelector("#cancel-add");
     this.UI.displayAddContact();
     cancelBtn.addEventListener("click", e => this.UI.hideAddContact());
@@ -132,13 +132,16 @@ class ContactManager {
   }
 
   addNewContact() {
+    console.log(this.UI.createContactForm)
     let submission = new FormData(this.UI.createContactForm);
+
     let newContact = this.detailer.formatContact(submission);
-    this.api.addToServer(newContact).then(newContact => {
-      this.add(newContact);
-      this.renderContactList();
-    }).catch(err => {
-      alert(this.api.formatError(err));
+    this.api.addToServer(newContact)
+      .then(newContact => {
+        this.add(newContact);
+      }).then(() => this.renderContactList())
+      .catch(err => {
+        alert(this.api.formatError(err));
     });
   }
 

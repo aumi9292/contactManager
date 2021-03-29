@@ -25,7 +25,9 @@ export class Detailer {
 
   formatContact(submission) {
     submission.append('id', this.id());
-    let newContact = Object.fromEntries(submission);
+
+    let newContact = Object.fromEntries(submission.entries());
+    console.log([...submission.entries()].forEach(console.log))
     this.cleanContact(newContact);
     return newContact;
   }
@@ -43,8 +45,12 @@ export class Detailer {
   }
 
   cleanContact(newContact) {
+    console.log(newContact)
+
     this.stringifySubmittedTags(newContact);
+    console.log(newContact)
     this.removeUnnecessaryDetails(newContact);
+    console.log(newContact)
   }
 }
 

@@ -6,11 +6,10 @@
 # Issues
 
 1. No validation for creating or editing contacts
-2. When you search by text and tag, the dual search does not work, nothing is implemented to handle it
-3. When you click a contact to edit, only tags that are clicked for that contact are shown (this was a design choice at first, but I realize this is not a friendly UI)
-4. Sometimes, multiple clicks need to happen for an event to fire (especially on the `Edit` button on the main contact list)
-5. Only text up to the first space shows up in rendered Handlebars templates for the `editModal`. That is, when you have a first and last name, only the first name shows up.
-6. The largest shortcoming is how I handle checkbox form data, which is mainly abstracted away by the `Detailer` class.
+2. When you click a contact to edit, only tags that are clicked for that contact are shown (this was a design choice at first, but I realize this is not a friendly UI)
+3. Sometimes, multiple clicks need to happen for an event to fire (especially on the `Edit` button on the main contact list)
+4. Only text up to the first space shows up in rendered Handlebars templates for the `editModal`. That is, when you have a first and last name, only the first name shows up.
+5. The largest shortcoming is how I handle checkbox form data, which is mainly abstracted away by the `Detailer` class.
 
 # Strengths
 

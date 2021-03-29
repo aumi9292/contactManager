@@ -19,7 +19,8 @@ export class Api {
   }
 
   addToServer(contact) {
-    return fetch("/api/contacts", this.addOpts(contact))
+    console.log(contact)
+    return fetch(this.listUrl, this.addOpts(contact))
       .then(resp => resp.json())
       .catch(err => alert(this.formatError(err)));
   }

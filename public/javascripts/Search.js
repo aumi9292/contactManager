@@ -21,7 +21,7 @@ export class Search {
 
   deselectTag(tag) {
     this.removeTag(tag.value);
-    tag.setAttribute('checked', false);
+    tag.removeAttribute('checked');
   }
 
   isNotSelected(tag) {
