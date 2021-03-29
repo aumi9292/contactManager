@@ -1,0 +1,281 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button > * {
+  pointer-events: none;
+}
+
+.container {
+  text-align: -webkit-center;
+  padding: 1rem 0 1rem 0;
+}
+
+.search-by-tag {
+  margin-top: 1rem;
+}
+
+.search-by-tag p {
+  margin-bottom: 0.5rem;
+}
+
+.search-by-tag label {
+  margin-right: 0.5rem;
+}
+
+.header {
+  width: 100%;
+  background-color: #6f5499;
+  color: white;
+  line-height: 1.4;
+}
+
+.header h1 {
+  font-weight: 500;
+  font-size: 2.5rem;
+  padding: 0.5rem;
+}
+
+.header p {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.btn {
+  color: #6f5499;
+  font-size: 1.25rem;
+  padding: 0.75rem 1rem;
+  margin: 1rem;
+  border: 1px solid #6f5499;
+  border-radius: 5%;
+  display: inline-block;
+}
+
+.btn:hover,
+.btn:focus,
+.form-btn:hover,
+.form-btn:focus,
+.contact-record .btn:hover,
+.contact-record .btn:focus {
+  background-color: #6f5499;
+  color: white;
+}
+
+input[type="text"] {
+  display: block;
+  width: 400px;
+  padding: 0.5rem 1rem;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 0.25rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #5ea9ff;
+  box-shadow: 0 0 0.5rem #5ea9ff;
+  transition: 0.25s;
+}
+
+.main {
+  background-color: whitesmoke;
+  border: 1px solid lightgray;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.contacts-placeholder {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  border-radius: 0.25rem;
+}
+
+.footer {
+  margin: 2rem 2rem 0;
+  border-top: 1px solid lightgray;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.footer p {
+  padding-top: 2rem;
+}
+
+.footer p a {
+  color: #5ea9ff;
+}
+
+fieldset {
+  border: none;
+  text-align: start;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+form input[type="text"] {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.form-btn {
+  color: #6f5499;
+  font-size: 1.25rem;
+  padding: 0.75rem 0 1rem;
+  margin: 0 2rem 1rem 3.5rem;
+  border: 1px solid #6f5499;
+  border-radius: 0.5rem;
+  display: inline-block;
+  background-color: white;
+  width: 85%;
+}
+
+.create-edit-header {
+  font-size: 2rem;
+  padding-bottom: 0.75rem;
+  margin: 0 2rem 1rem;
+  border-bottom: 1px solid lightgray;
+}
+
+.create-edit {
+  z-index: 2;
+}
+
+.contact-record .btn {
+  color: #6f5499;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.75rem;
+  margin: 0.5rem;
+  border: 1px solid #6f5499;
+  border-radius: 0.5rem;
+  display: inline-block;
+}
+
+.contact-record dl {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.contact-record dl dd {
+  margin: 0.3rem 0;
+  font-weight: normal;
+}
+
+.contact-record {
+  margin: 0 0.75rem;
+  text-align: left;
+}
+
+.tag {
+  display: flex;
+  align-content: center;
+}
+
+.tag input {
+  display: inline;
+}
+
+.tag label {
+  display: inline;
+}
+
+.select-tags {
+  margin: 1.5rem 0;
+}
+
+.select-tags p {
+  margin-bottom: 0.75rem;
+  font-weight: bold;
+}
+
+.select-tags label {
+  margin: 0.5rem;
+  font-weight: normal;
+}
+
+.hide {
+  display: none;
+}
+
+.create-edit.start {
+  top: 550px;
+  visibility: hidden;
+  overflow: hidden;
+  max-height: 0;
+}
+
+.create-edit.slideup {
+  position: absolute;
+  width: 100%;
+  top: 150px;
+  height: 100%;
+  background-color: white;
+  visibility: visible;
+  transition-property: top visibility opacity;
+  transition-duration: 1s;
+  opacity: 1;
+}
+
+.create-edit.slidedown {
+  top: 550px;
+  visibility: hidden;
+  opacity: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition-property: top visibility opacity max-height;
+  transition-duration: 1s;
+  animation: 1s delay-overflow;
+}
+
+@keyframes delay-overflow {
+  from {
+    max-height: 100%;
+  }
+
+  to {
+    max-height: 0;
+  }
+}
