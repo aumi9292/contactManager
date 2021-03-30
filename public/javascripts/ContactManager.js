@@ -140,6 +140,7 @@ class ContactManager {
 
   populateEditDiv(contact) {
     let tags = this.handlifyForContact(contact);
+    console.log(tags);
     this.UI.displayEditContact({contact: contact, tags: tags});
   }
 
@@ -232,9 +233,15 @@ class ContactManager {
   }
 
   handlifyForContact(contact) {
-    let tags = this.getUniqueTagsForContact(contact);
-    return tags.map(tag => ({name: tag}));
+    let checkedTags = this.getUniqueTagsForContact(contact);
+    return this.handlify(checkedTags);
   }
+
+  // (contact) {
+  //   //let tags = this.getUniqueTagsForContact(contact);
+  //   let tags = this.getAllUniqueTags();
+  //   return tags.map(tag => ({name: tag}));
+  // }
 
   removeContactAndDisplayUpdatedList(contact) {
     this.api.removeFromServer(contact);

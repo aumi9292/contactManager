@@ -205,8 +205,14 @@ form input[type="text"] {
 }
 
 .contact-record {
-  margin: 0 0.75rem;
+  margin: 0.75rem 0.75rem;
+  padding: 0.75rem 0.75rem;
   text-align: left;
+  background-color: whitesmoke;
+  display: inline-block;
+  justify-self: center;
+  border: 1px solid #6f5499;
+  vertical-align: top;
 }
 
 .tag {

@@ -264,7 +264,6 @@ class ContactManager {
   }
 
   reRenderContacts(checkedTags) {
-    console.log(checkedTags)
     let filtered = this.filterByTag();
     this.renderContactList(filtered, checkedTags);
   }

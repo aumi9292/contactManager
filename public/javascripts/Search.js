@@ -43,7 +43,7 @@ export class Search {
   }
 
   keyShouldBeIgnored(key) {
-    return /[^a-z]/i.test(key) || (key !== 'Backspace' && key.length > 1);
+    return /[^a-z0-9]/i.test(key) || (key !== 'Backspace' && key.length > 1);
   }
 
   addToSearchStr(char) {

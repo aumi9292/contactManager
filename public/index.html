@@ -109,7 +109,7 @@
   <form id="edit-contact" action="/" method="post">
     <fieldset contact-id={{contact.id}}>
       <label for="nameEdit">Full Name:</label>
-      <input type="text" name="full_name" id="nameEdit" value= {{contact.full_name}} />
+      <input type="text" name="full_name" id="nameEdit" value= '{{contact.full_name}}' />
       <label for="emailEdit">Email Address:</label>
       <input type="text" name="email" id="emailEdit" value= {{contact.email}} />
       <label for="phone_numberEdit">Telephone Number:</label>
@@ -117,7 +117,7 @@
       <div class="select-tags">
         <p>Tags: (optional)</p>
         {{#each tags}}
-        <input type="checkbox" name={{name}} value={{name}} id="{{name}}Edit" checked>
+        <input type="checkbox" name={{name}} value={{name}} id="{{name}}Edit" {{#if checked}} checked {{/if}}>
         <label for="{{name}}Edit">{{name}}</label>
         {{/each}}
         <label for="otherAdd">
