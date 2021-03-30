@@ -98,7 +98,6 @@ class ContactManager {
 
   handleSubmit() {
     this.addNewContact();
-    this.hideOrDisplayPlaceholder();
     this.UI.hideAddContact();
   }
 
@@ -114,7 +113,6 @@ class ContactManager {
       let tag = e.target;
       this.search.updateSearchForTag(tag);
       this.reFilterAndReRender(this.search.selectedTags);
-      // this.reFilterAndReRender();
     });
   }
 
@@ -132,17 +130,18 @@ class ContactManager {
   }
 
   addNewContact() {
-    console.log(this.UI.createContactForm)
+    console.log(this.UI.createContactForm);
     let submission = new FormData(this.UI.createContactForm);
 
     let newContact = this.detailer.formatContact(submission);
     this.api.addToServer(newContact)
       .then(newContact => {
         this.add(newContact);
+        this.hideOrDisplayPlaceholder();
       }).then(() => this.renderContactList())
       .catch(err => {
         alert(this.api.formatError(err));
-    });
+      });
   }
 
   updateAndReRender() {

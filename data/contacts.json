@@ -1,44 +1,9 @@
 [
   {
-    "full_name": "bob",
+    "full_name": "Austin",
     "phone_number": "7202927829",
     "email": "austin.miller@dmns.org",
-    "tags": "engineering,",
-    "id": 14
-  },
-  {
-    "full_name": "Austin Miller",
-    "phone_number": "7202927829",
-    "email": "austin.miller@dmns.org",
-    "tags": "marketing,",
-    "id": 15
-  },
-  {
-    "full_name": "Austin Miller",
-    "phone_number": "7202927829",
-    "email": "Austin.miller@colorado.edu",
-    "tags": "engineering,",
-    "id": 16
-  },
-  {
-    "full_name": "Austin Miller",
-    "phone_number": "7202927829",
-    "email": "austin.miller@dmns.org",
-    "tags": "engineering,",
-    "id": 17
-  },
-  {
-    "full_name": "Austin Miller",
-    "phone_number": "7202927829",
-    "email": "Austin.miller@colorado.edu",
-    "tags": "engineering,",
-    "id": 18
-  },
-  {
-    "full_name": "Austin Miller",
-    "phone_number": "7202927829",
-    "email": "austin.miller@dmns.org",
-    "tags": "engineering,",
-    "id": 19
+    "tags": "engineering,compcomp",
+    "id": 1
   }
 ]
