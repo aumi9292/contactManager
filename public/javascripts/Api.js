@@ -19,14 +19,14 @@ export class Api {
   }
 
   addToServer(contact) {
-    console.log(contact)
     return fetch(this.listUrl, this.addOpts(contact))
       .then(resp => resp.json())
       .catch(err => alert(this.formatError(err)));
   }
 
   removeFromServer(contact) {
-    fetch(`${this.listUrl}/${contact.id}`, { method: 'delete'} );
+    fetch(`${this.listUrl}/${contact.id}`, { method: 'delete'} )
+      .then((null), (err => alert(this.formatError(err))));
   }
 
   updateOpts(contact) {

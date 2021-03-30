@@ -64,14 +64,33 @@ class ContactManager {
 
   setupEditHandler() {
     this.UI.editModal.addEventListener('click', e => {
-      this.handleEditClick(e.target);
+      if (e.target.nodeName === 'BUTTON') {
+        this.handleEditClick(e.target);
+      }
     });
   }
 
+  handleSubmit() {
+    let newContact = this.convertFormForAdd();
+    if (this.detailer.invalidInput(newContact)) {
+      this.handleAddClick();
+    } else {
+      this.addNewContact(newContact);
+      this.UI.hideAddContact();
+    }
+  }
+
   handleEditClick(btn) {
-    if (btn.nodeName !== 'BUTTON') return;
-    if (btn.id === 'submit-edit') this.updateAndReRender();
-    this.UI.hideEditContact();
+    if (btn.id === 'cancel-edit') {
+      this.UI.hideEditContact();
+      return;
+    }
+
+    let newDetails = this.convertFormForEdit();
+
+    if (this.detailer.validEditSubmit(newDetails, btn.id)) {
+      this.submitEdit(newDetails);
+    }
   }
 
   setupAddHandlers() {
@@ -94,11 +113,6 @@ class ContactManager {
       e.preventDefault();
       this.handleSubmit();
     });
-  }
-
-  handleSubmit() {
-    this.addNewContact();
-    this.UI.hideAddContact();
   }
 
   setupTextSearchHandler() {
@@ -129,11 +143,16 @@ class ContactManager {
     this.UI.displayEditContact({contact: contact, tags: tags});
   }
 
-  addNewContact() {
-    console.log(this.UI.createContactForm);
-    let submission = new FormData(this.UI.createContactForm);
+  inputError(newContact) {
+    return newContact['full_name'].trim().length === 0;
+  }
 
-    let newContact = this.detailer.formatContact(submission);
+  convertFormForAdd() {
+    let submission = new FormData(this.UI.createContactForm);
+    return this.detailer.formatContact(submission);
+  }
+
+  addNewContact(newContact) {
     this.api.addToServer(newContact)
       .then(newContact => {
         this.add(newContact);
@@ -144,21 +163,29 @@ class ContactManager {
       });
   }
 
-  updateAndReRender() {
-    this.updateContact();
+  updateAndReRender(contact, newDetails) {
+    this.updateContact(contact, newDetails);
     this.renderContactList();
   }
 
-  updateContact() {
-    let contact = this.locateContactToEdit();
-    let submittedEdits = new FormData(this.UI.editModal.querySelector('form'));
-    this.detailer.updateContactInfoInList(contact, submittedEdits);
+  updateContact(contact, newDetails) {
+    this.detailer.updateLocalContactInfo(contact, newDetails);
     this.api.updateInfoOnServer(contact);
+  }
+
+  submitEdit(newDetails) {
+    let contact = this.locateContactToEdit();
+    this.updateAndReRender(contact, newDetails);
+    this.UI.hideEditContact();
+  }
+
+  convertFormForEdit() {
+    let submittedEdits = new FormData(this.UI.editModal.querySelector('form'));
+    return this.detailer.formatContactToCheck(submittedEdits);
   }
 
   separateTag(tag) {
     return !tag ? null : tag.split(',');
-
   }
 
   getSeparatedTags(tags) {

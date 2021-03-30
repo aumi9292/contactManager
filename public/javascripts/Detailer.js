@@ -25,37 +25,63 @@ export class Detailer {
 
   formatContact(submission) {
     submission.append('id', this.id());
-
-    let newContact = Object.fromEntries(submission.entries());
-    console.log([...submission.entries()].forEach(console.log))
+    let newContact = Object.fromEntries([...submission.entries()]);
     this.cleanContact(newContact);
     return newContact;
   }
 
-  updateContactInfoInList(contact, submittedEdits) {
-    let newContactInfo = Object.fromEntries([...submittedEdits]);
+  formatContactToCheck(submittedEdits) {
+    let newContactInfo = Object.fromEntries([...submittedEdits.entries()]);
     this.cleanContact(newContactInfo);
-    this.updateContactInfo(contact, newContactInfo);
+    return newContactInfo;
   }
 
-  updateContactInfo(contact, newContactInfo) {
+  validEditSubmit(newDetails, btnId) {
+    return !(this.invalidInput(newDetails)) &&
+    btnId === 'submit-edit';
+  }
+
+  updateLocalContactInfo(contact, newContactInfo) {
     for (let detail in newContactInfo) {
       contact[detail] = newContactInfo[detail];
     }
   }
 
   cleanContact(newContact) {
-    console.log(newContact)
-
     this.stringifySubmittedTags(newContact);
-    console.log(newContact)
     this.removeUnnecessaryDetails(newContact);
-    console.log(newContact)
+  }
+
+  nameIsInvalid(name) {
+    return !/^[a-z]+\s?[a-z]+$/i.test(name.trim());
+  }
+
+  emailIsInvalid(email) {
+    return !/.+@.+\..+/.test(email);
+  }
+
+  numberIsInvalid(number) {
+    return !/^\d{7,10}$/.test(number);
+  }
+
+  invalidInput(newContact) {
+    let {full_name, email, phone_number} = newContact;
+
+    if (this.nameIsInvalid(full_name)) {
+      alert("Please enter your name");
+    } else if (this.emailIsInvalid(email)) {
+      alert("Please enter a valid email");
+    } else if (this.numberIsInvalid(phone_number)) {
+      alert("Please enter a valid phone number");
+    } else {
+      return false;
+    }
+    return true;
   }
 }
 
 Detailer.prototype.generateId = function generateId() {
-  let id = 10;
+  let id = 1000;
   return function() {
     id += 1;
     return id;

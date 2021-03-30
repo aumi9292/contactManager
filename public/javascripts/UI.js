@@ -17,7 +17,6 @@ export class UI {
 
   hideAddContact() {
     this.addContactForm.classList.add("slidedown");
-    //addContactForm.classList.remove('slideup')
     this.contactUL.classList.remove("hide");
     this.createContactForm.reset();
   }
