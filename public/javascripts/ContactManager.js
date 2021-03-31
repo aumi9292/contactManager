@@ -237,12 +237,6 @@ class ContactManager {
     return this.handlify(checkedTags);
   }
 
-  // (contact) {
-  //   //let tags = this.getUniqueTagsForContact(contact);
-  //   let tags = this.getAllUniqueTags();
-  //   return tags.map(tag => ({name: tag}));
-  // }
-
   removeContactAndDisplayUpdatedList(contact) {
     this.api.removeFromServer(contact);
     this.contactsList = this.contactsList.filter(cont => cont !== contact);
